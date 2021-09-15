@@ -1,0 +1,12 @@
+.foot {
+	width: 100vw;
+	height: 50px;
+	background-color: rgba(255, 2, 138, 1);
+	position: fixed;
+	bottom: 0;
+	-webkit-backdrop-filter: blur(10px);
+	box-shadow: 0 -5px 15px rgba(0,0, 0, .2);
+	backdrop-filter:blur(10px);
+
+	
+}

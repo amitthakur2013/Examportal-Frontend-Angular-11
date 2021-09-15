@@ -1,0 +1,68 @@
+<div class="container card-cont mt-5">
+	<div class="card2 text-center">
+		<div class="card2-header">
+			<h2>Register Here!</h2>
+		</div>
+		<div class="card-body">
+			<!-- Rective Form:  -->
+
+			<form class="form" [formGroup]="userForm" (ngSubmit)="formSubmit()">
+				<mat-form-field class="full-width" appearance="outline">
+				    <mat-label>Username</mat-label>
+				    <input matInput placeholder="Enter here..." id="username" required="true" formControlName="username">
+				    <mat-icon matSuffix>perm_identity</mat-icon>
+				    <mat-hint class="username_avl" *ngIf="userForm.controls['username'].value.length">username available</mat-hint>
+				    <mat-error *ngIf="userForm.controls['username'].hasError('required')">Username is Required</mat-error>
+				    <mat-error *ngIf="userForm.controls['username'].hasError('pattern')">only alphanumerics allowed</mat-error>
+				    <mat-error *ngIf="userForm.controls['username'].hasError('usernameInUse')">username already taken</mat-error>
+
+				</mat-form-field>
+
+				<mat-form-field class="full-width" appearance="outline">
+				    <mat-label>Password</mat-label>
+				    <input [type]="toggle_pass?'password':'text'" matInput placeholder="Enter here..." id="password" required="true" formControlName="password">
+				    <mat-icon class="pointer" (click)="toggle_pass=!toggle_pass" matSuffix>{{toggle_pass?'visibility':'visibility_off'}}</mat-icon>
+				    <mat-error *ngIf="userForm.controls['password'].hasError('required')">Password is Required</mat-error>
+				</mat-form-field>
+
+				<mat-form-field class="full-width" appearance="outline">
+				    <mat-label>First Name</mat-label>
+				    <input matInput placeholder="Enter here..." id="firstName" required="true" formControlName="firstName">
+				    <mat-icon matSuffix>edit</mat-icon>
+				    <mat-error *ngIf="userForm.controls['firstName'].hasError('pattern')">Only Characters Allowed in First Name</mat-error>
+				    <mat-error *ngIf="userForm.controls['firstName'].hasError('required')">First Name is Required</mat-error>
+				</mat-form-field>
+
+				<mat-form-field class="full-width" appearance="outline">
+				    <mat-label>Last Name</mat-label>
+				    <input  matInput placeholder="Enter here..." id="lastName" required="true" formControlName="lastName">
+				    <mat-icon matSuffix>edit</mat-icon>
+				    <mat-error *ngIf="userForm.controls['lastName'].hasError('pattern')">Only Characters Allowed in Last Name</mat-error>
+				    <mat-error *ngIf="userForm.controls['lastName'].hasError('required')">Last Name is Required</mat-error>
+				</mat-form-field>
+
+				<mat-form-field class="full-width" appearance="outline">
+				    <mat-label>Email</mat-label>
+				    <input type="email" matInput placeholder="Enter here..." id="email" required="true" formControlName="email">
+				    <mat-icon matSuffix>email</mat-icon>
+				    <mat-error *ngIf="userForm.controls['email'].hasError('pattern')">Enter Valid Email</mat-error>
+				    <mat-error *ngIf="userForm.controls['email'].hasError('required')">Email is Required</mat-error>
+				</mat-form-field>
+
+				<mat-form-field class="full-width" appearance="outline">
+				    <mat-label>Phone No</mat-label>
+				    <input type="number" matInput placeholder="Enter here..." id="phone" required="true" formControlName="phone">
+				    <mat-icon matSuffix>call</mat-icon>
+				    <mat-error *ngIf="userForm.controls['phone'].hasError('min') || userForm.controls['phone'].hasError('max')">Enter Valid Phone No</mat-error>
+				    <mat-error *ngIf="userForm.controls['phone'].hasError('required')">Phone No is Required</mat-error>
+				</mat-form-field>
+
+				<div class="butt">
+					<button mat-raised-button color="primary" [disabled]="!userForm.valid">Register</button>
+					<button class="ml-2" mat-raised-button color="accent" type="reset">Reset</button>
+				</div>
+			</form>
+
+		</div>
+	</div>
+</div>

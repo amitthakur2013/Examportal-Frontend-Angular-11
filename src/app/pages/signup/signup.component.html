@@ -5,13 +5,12 @@
 		</div>
 		<div class="card-body">
 			<!-- Rective Form:  -->
-
 			<form class="form" [formGroup]="userForm" (ngSubmit)="formSubmit()">
 				<mat-form-field class="full-width" appearance="outline">
 				    <mat-label>Username</mat-label>
 				    <input matInput placeholder="Enter here..." id="username" required="true" formControlName="username">
 				    <mat-icon matSuffix>perm_identity</mat-icon>
-				    <mat-hint class="username_avl" *ngIf="userForm.controls['username'].value.length">username available</mat-hint>
+				    <mat-hint class="username_avl" *ngIf="userForm.controls['username'].value && userForm.controls['username'].value.length">&#10003; username available </mat-hint>
 				    <mat-error *ngIf="userForm.controls['username'].hasError('required')">Username is Required</mat-error>
 				    <mat-error *ngIf="userForm.controls['username'].hasError('pattern')">only alphanumerics allowed</mat-error>
 				    <mat-error *ngIf="userForm.controls['username'].hasError('usernameInUse')">username already taken</mat-error>
@@ -62,7 +61,6 @@
 					<button class="ml-2" mat-raised-button color="accent" type="reset">Reset</button>
 				</div>
 			</form>
-
 		</div>
 	</div>
 </div>

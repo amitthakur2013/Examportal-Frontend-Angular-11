@@ -13,7 +13,7 @@ import { UsernameValidator } from '../../validators/username';
 })
 export class SignupComponent implements OnInit {
 
-  toggle_pass=false;
+  toggle_pass=true;
 
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
 
@@ -29,6 +29,9 @@ export class SignupComponent implements OnInit {
   constructor(private userService : UserService, private snack:MatSnackBar, private fb: FormBuilder, private usernameValidator: UsernameValidator) { }
 
   ngOnInit(): void {
+
+  this.userForm.controls['username'].markAsDirty({ onlySelf: true });
+  this.userForm.controls['username'].markAsTouched({ onlySelf: true });
   }
 
   openSnackBar(message) {
@@ -53,7 +56,7 @@ export class SignupComponent implements OnInit {
   		if(err.status === 422)
   			this.openSnackBar(err.error);
   		else
-  			this.openSnackBar("Something went wrong!");
+  			this.openSnackBar("Something went wrong, Try again !");
   	}
   	);
 
